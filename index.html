@@ -9,9 +9,12 @@
       AFRAME.registerComponent('set-sky', {
         schema: {default:''},
         init() {
-          const sky = document.querySelector('a-sky');
+          const sky    = document.querySelector('a-sky');
+          const camera = document.querySelector('a-camera');
           this.el.addEventListener('click', () => {
             sky.setAttribute('src', this.data);
+            camera.setAttribute('rotation', this.el.getAttribute('rotation'));
+            camera.setAttribute('position', this.el.getAttribute('position'));
           });
         }
       });
@@ -19,7 +22,7 @@
   </head>
   <body>
     <a-scene>
-      <a-box position="12 1.25 -8" rotation="0 0 45" color="#EF2D5E" set-sky="https://c3.staticflickr.com/2/1475/26239222850_cabde81c39_k.jpg">
+      <a-box position="12 1.25 -8" rotation="0 -214 0" color="#EF2D5E" set-sky="vr360_sample05.jpg">
       </a-box>
       <a-sky src="vr360_sample04.jpg" rotation="0 -130 0"></a-sky>
       <a-camera position="0 1.8 0">
